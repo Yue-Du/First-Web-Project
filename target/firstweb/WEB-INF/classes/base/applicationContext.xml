@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.yue.first">
+        <!--将Controller的注解排除掉 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <import resource="classpath:base/mybatisConfiguration.xml"/>
+
+    <!--    <bean id="basicLogHandlerAdvice" class="com.meituan.supply.chain.annotation.handler.BasicLogHandlerAdvice"/>-->
+
+    <!--    <aop:config expose-proxy="true" proxy-target-class="true">-->
+    <!--        <aop:pointcut id="basicLogPointCut"-->
+    <!--                      expression="(@annotation(com.meituan.supply.chain.annotation.BasicLog)) || (@within(com.meituan.supply.chain.annotation.BasicLog))"/>-->
+    <!--        &lt;!&ndash;给了最高的优先级 &ndash;&gt;-->
+    <!--        <aop:advisor order="-2147483648" advice-ref="basicLogHandlerAdvice" pointcut-ref="basicLogPointCut"/>-->
+    <!--    </aop:config>-->
+
+
+    <!--用来初始化配置-->
+    <!--    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+    <!--        <property name="locations">-->
+    <!--            <list>-->
+    <!--                &lt;!&ndash;用来存放和profile相关的配置信息&ndash;&gt;-->
+    <!--                &lt;!&ndash;                <value>classpath:config.properties</value>&ndash;&gt;-->
+    <!--            </list>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+</beans>
+
