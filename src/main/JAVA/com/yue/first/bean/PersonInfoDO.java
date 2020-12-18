@@ -1,5 +1,6 @@
 package com.yue.first.bean;
 
+
 public class PersonInfoDO {
     long id;
     String name;
