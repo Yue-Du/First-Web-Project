@@ -15,8 +15,17 @@
         select * from person_info where id = #{id}
     </select>
 
-    <insert id="insertPersonInfo" parameterType="com.yue.first.bean.PersonInfoDO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertPersonInfo" parameterType="com.yue.first.bean.PersonInfoDO" useGeneratedKeys="true"
+            keyProperty="id">
         insert into person_info(name, gender, age) values(#{personInfoDO.name}, #{personInfoDO.gender},#{personInfoDO.age})
     </insert>
+
+    <update id="updatePersonInfoById" parameterType="com.yue.first.bean.PersonInfoDO">
+	 	update person_info set
+		 	name=#{updatePersonInfoDO.name},
+		 	gender=#{updatePersonInfoDO.gender},
+		 	age=#{updatePersonInfoDO.age}
+	 	where id=#{id}
+	 </update>
 
 </mapper>

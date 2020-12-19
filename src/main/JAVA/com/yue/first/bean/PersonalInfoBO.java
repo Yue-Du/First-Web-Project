@@ -5,7 +5,7 @@ public class PersonalInfoBO {
     short gender;
     short age;
 
-    public static PersonalInfoBO createPersonInfoBO(PersonInfoDO personalInfoDO){
+    public static PersonalInfoBO createPersonInfoBO(PersonInfoDO personalInfoDO) {
         PersonalInfoBO personInfoBO = new PersonalInfoBO();
         personInfoBO.setName(personalInfoDO.getName());
         personInfoBO.setGender(personalInfoDO.getGender());
@@ -35,6 +35,14 @@ public class PersonalInfoBO {
 
     public void setAge(short age) {
         this.age = age;
+    }
+
+    public String toJson() {
+        return "'personalInfoBO':{" +
+                "'name:'" + name +
+                ", 'gender':" + gender +
+                ", 'age':" + age +
+                '}';
     }
 }
 
