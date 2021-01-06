@@ -1,9 +1,10 @@
 package com.yue.first.mapper;
 
-import com.yue.first.bean.EmployeeInfoDO;
+import com.yue.first.bean.CompanyEntity;
 
 public interface EmployeeInfoDao {
-    void insertPerson(EmployeeInfoDO person);
-
-    EmployeeInfoDO getPerson(int id);
+    void save(CompanyEntity employee);
+    void update(CompanyEntity employee);
+    void delete(CompanyEntity employee);
+    CompanyEntity findByEmployeeId(String id);
 }

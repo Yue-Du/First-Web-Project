@@ -1,22 +1,29 @@
 package com.yue.first.mapper;
-
-import org.springframework.orm.hibernate3.HibernateTemplate;
-
+import com.yue.first.bean.CompanyEntity;
+import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Service;
+import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.yue.first.bean.EmployeeInfoDO;
+@Service("employeeinfoDao")
+public class EmployeeInfoDaoImpl extends CustomHibernateDaoSupport implements EmployeeInfoDao{
 
-public class EmployeeInfoDaoImpl extends HibernateDaoSupport implements EmployeeInfoDao{
-
-	@Override
-    public void insertPerson(EmployeeInfoDO person) {
-        this.getHibernateTemplate().save(person);
+    public void save(CompanyEntity employee){
+        getHibernateTemplate().save(employee);
     }
 
-
-    @Override
-    public EmployeeInfoDO getPerson(int id) {
-        return this.getHibernateTemplate().get(EmployeeInfoDO.class, id);
+    public void update(CompanyEntity employee){
+        getHibernateTemplate().update(employee);
     }
 
+    public void delete(CompanyEntity employee){
+        getHibernateTemplate().delete(employee);
+    }
+
+    public CompanyEntity findByEmployeeId(String id){
+        List list = getHibernateTemplate().find(
+                "from CompanyEntity where id=?",id
+        );
+        return (CompanyEntity)list.get(0);
+    }
 }

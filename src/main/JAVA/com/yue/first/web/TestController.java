@@ -1,7 +1,7 @@
 package com.yue.first.web;
 
 import com.yue.first.bean.*;
-import com.yue.first.mapper.EmployeeInfoDao;
+import com.yue.first.service.EmployeeInfoService;
 import com.yue.first.service.PersonInfoService;
 import com.yue.first.util.Logger;
 import com.yue.first.util.Moniter;
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import javax.annotation.Resource;
 
@@ -80,25 +83,18 @@ public class TestController {
     @RequestMapping("/insertEmployee")
     @ResponseBody
     public void insertEmployee() {
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("resources/base/applicationContext.xml");
 
-        FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext(
-                "src\\applicationContext.xml");
-        EmployeeInfoDao personDao = (EmployeeInfoDao) context.getBean("EmployeeInfoDao");
-        EmployeeInfoDO person = new EmployeeInfoDO();
-        person.setName("Jack");
-        person.setAge(32);
-        personDao.insertPerson(person);
+        EmployeeInfoService employeeService = (EmployeeInfoService)appContext.getBean("employeeService");
+
+        /** insert **/
+        CompanyEntity employee = new CompanyEntity();
+        employee.setId(1);
+        employee.setAge(15);
+        employee.setName("Alice");
+
+        employeeService.save(employee);
     }
-
-//        try {
-//            EmployeeInfoBo result = EmployeeInfoService.getEmployeeInfoById(id);
-//            return WebResponse.createResponse().success().value(result);
-//        } catch (Exception exception) { //never write return statement under catch!
-//            Logger.info(exception.toString());
-//        } finally {  //never write return statement under finally!
-//
-//        }
-//        return WebResponse.createResponse().failed();
 
 }
 
