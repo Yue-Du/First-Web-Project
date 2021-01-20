@@ -4,9 +4,6 @@ import com.yue.first.bean.CompanyEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service("employeeinfoDao")

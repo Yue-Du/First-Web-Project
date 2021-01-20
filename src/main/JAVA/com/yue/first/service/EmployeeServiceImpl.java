@@ -1,14 +1,9 @@
 package com.yue.first.service;
-
 import com.yue.first.bean.CompanyEntity;
 import com.yue.first.mapper.EmployeeInfoDao;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeInfoService{
