@@ -6,5 +6,5 @@ public interface EmployeeInfoDao {
     void save(CompanyEntity employee);
     void update(CompanyEntity employee);
     void delete(CompanyEntity employee);
-    CompanyEntity findByEmployeeId(String id);
+    CompanyEntity findByEmployeeId(Integer id);
 }

@@ -4,10 +4,15 @@ import com.yue.first.bean.CompanyEntity;
 import com.yue.first.mapper.EmployeeInfoDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeInfoService{
+
     @Autowired
     EmployeeInfoDao employeeinfoDao;
 
@@ -27,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeInfoService{
         employeeinfoDao.delete(employee);
     }
 
-    public CompanyEntity findByEmployeeId(String id){
+    public CompanyEntity findByEmployeeId(Integer id){
         return employeeinfoDao.findByEmployeeId(id);
     }
 }

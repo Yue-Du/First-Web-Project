@@ -24,6 +24,9 @@ public class TestController {
     @Resource
     private PersonInfoService personInfoService;
 
+    @Resource
+    private EmployeeInfoService employeeInfoService;
+
     @RequestMapping("/one")
     @ResponseBody
     public String testOne() {
@@ -82,18 +85,22 @@ public class TestController {
 
     @RequestMapping("/insertEmployee")
     @ResponseBody
-    public void insertEmployee() {
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("resources/base/applicationContext.xml");
-
-        EmployeeInfoService employeeService = (EmployeeInfoService)appContext.getBean("employeeService");
+    public int insertEmployee() {
 
         /** insert **/
         CompanyEntity employee = new CompanyEntity();
         employee.setId(1);
         employee.setAge(15);
         employee.setName("Alice");
+        employeeInfoService.save(employee);
+        return 1;
+    }
 
-        employeeService.save(employee);
+    @RequestMapping("/findByEmployeeId")
+    @ResponseBody
+    public int findByEmployeeId() {
+        employeeInfoService.findByEmployeeId(1);
+        return 1;
     }
 
 }

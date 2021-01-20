@@ -6,5 +6,5 @@ public interface EmployeeInfoService {
     void save(CompanyEntity employee);
     void update(CompanyEntity stock);
     void delete(CompanyEntity stock);
-    CompanyEntity findByEmployeeId(String id);
+    CompanyEntity findByEmployeeId(Integer id);
 }
